@@ -4,22 +4,38 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "pnpm test:run && pnpm test:e2e",
+    "lint": "oxlint .",
+    "format": "prettier --write .",
+    "check": "pnpm lint && pnpm build && pnpm test:run",
+    "web-ext:run": "web-ext run --config web-ext-config.mjs",
+    "web-ext:lint": "web-ext lint --config web-ext-config.mjs",
+    "web-ext:build": "web-ext build --config web-ext-config.mjs",
+    "package": "pnpm build && pnpm web-ext:build"
   },
   "dependencies": {
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/firefox-webext-browser": "^143.0.0",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
+    "jsdom": "^29.1.1",
     "oxlint": "^1.71.0",
+    "prettier": "^3.9.4",
     "typescript": "~6.0.2",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "vitest": "^4.1.9",
+    "web-ext": "^10.4.0"
   }
 }
