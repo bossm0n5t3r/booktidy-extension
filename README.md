@@ -98,7 +98,7 @@ Firefox가 열리면 지원 대상 도서 검색 결과 페이지에서 popup을
 ## 문서
 
 - [CHANGELOG.md](CHANGELOG.md): 릴리스 변경 사항.
-- [PRIVACY.md](PRIVACY.md): 저장 데이터, 수집하지 않는 데이터, 권한 사용 목적.
+- [PRIVACY.en.md](PRIVACY.en.md), [PRIVACY.ko.md](PRIVACY.ko.md): 저장 데이터, 수집하지 않는 데이터, 권한 사용 목적.
 
 ## 독립 구현 원칙
 
