@@ -1,6 +1,8 @@
 {
   "name": "booktidy-extension",
   "private": true,
+  "license": "MIT",
+  "author": "bossm0n5t3r",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

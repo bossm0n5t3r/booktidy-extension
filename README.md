@@ -4,7 +4,7 @@ BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입�
 
 ## MVP 범위
 
-- 대상 브라우저: Firefox Desktop 127 이상.
+- 대상 브라우저: Firefox Desktop 140 이상.
 - 지원 사이트: `kyobobook.co.kr`.
 - 규칙 타입: `publisher`, `author`, `title`.
 - 매칭 방식: `contains`.
