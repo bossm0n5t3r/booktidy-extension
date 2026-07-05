@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## 1.0.0
 
 - Firefox Manifest V3 extension skeleton.
 - Local `browser.storage.local` rules and enabled setting.

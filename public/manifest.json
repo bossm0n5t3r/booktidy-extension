@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "BookTidy",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Collapse matching book listings based on user-defined publisher or author rules.",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["*://*.kyobobook.co.kr/*"],
