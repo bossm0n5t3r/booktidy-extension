@@ -1,3 +1,86 @@
-:root {
-  --booktidy-placeholder: 0;
+.booktidy-original-hidden {
+  display: none !important;
+}
+
+.booktidy-collapsed {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  margin: 14px 0;
+  padding: 16px 18px;
+  border: 1px solid #d7e0f3;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(20, 184, 166, 0.08)), #ffffff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  color: #111827;
+  font:
+    14px/1.45 Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.booktidy-collapsed__marker {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.booktidy-collapsed__marker-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.booktidy-collapsed__content {
+  min-width: 0;
+}
+
+.booktidy-collapsed__title {
+  font-weight: 750;
+}
+
+.booktidy-collapsed__reason {
+  margin-top: 3px;
+  color: #4b5563;
+}
+
+.booktidy-collapsed button {
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.booktidy-collapsed button:hover {
+  background: #dbeafe;
+}
+
+:root[data-booktidy-theme="dark"] .booktidy-collapsed {
+  border-color: #334155;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(20, 184, 166, 0.14)), #0f172a;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.22);
+  color: #f8fafc;
+}
+
+:root[data-booktidy-theme="dark"] .booktidy-collapsed__reason {
+  color: #cbd5e1;
+}
+
+:root[data-booktidy-theme="dark"] .booktidy-collapsed button {
+  border-color: #1d4ed8;
+  background: #1e293b;
+  color: #bfdbfe;
 }

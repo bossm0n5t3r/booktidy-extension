@@ -14,10 +14,11 @@
     "lint": "oxlint .",
     "format": "prettier --write .",
     "check": "pnpm lint && pnpm build && pnpm test:run",
+    "clean": "rm -rf dist web-ext-artifacts",
     "web-ext:run": "web-ext run --config web-ext-config.mjs",
     "web-ext:lint": "web-ext lint --config web-ext-config.mjs",
     "web-ext:build": "web-ext build --config web-ext-config.mjs",
-    "package": "pnpm build && pnpm web-ext:build"
+    "package": "pnpm clean && pnpm build && pnpm web-ext:build"
   },
   "dependencies": {
     "react": "^19.2.7",

@@ -3,8 +3,14 @@
   "name": "BookTidy",
   "version": "0.1.0",
   "description": "Collapse matching book listings based on user-defined publisher or author rules.",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "host_permissions": ["*://*.kyobobook.co.kr/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["booktidy-icon.svg"],
+      "matches": ["*://*.kyobobook.co.kr/*"]
+    }
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "booktidy@example.com",
@@ -13,7 +19,14 @@
   },
   "action": {
     "default_title": "BookTidy",
-    "default_popup": "src/popup/index.html"
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "48": "booktidy-icon.svg"
+    }
+  },
+  "icons": {
+    "48": "booktidy-icon.svg",
+    "96": "booktidy-icon.svg"
   },
   "background": {
     "scripts": ["assets/background.js"],

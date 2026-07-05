@@ -5,6 +5,6 @@ export default {
     overwriteDest: true,
   },
   run: {
-    startUrl: ["https://search.kyobobook.co.kr/search?keyword=booktidy"],
+    startUrl: ["https://store.kyobobook.co.kr/category/domestic/3301/all"],
   },
 };

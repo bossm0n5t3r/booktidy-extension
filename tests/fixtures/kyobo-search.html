@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kyobo Search Fixture</title>
+  </head>
+  <body>
+    <ul class="prod_list">
+      <li class="prod_item">
+        <input class="result_checkbox" type="checkbox" data-pid="PUBLISHER_MATCH" />
+        <div class="prod_name_group">
+          <a class="prod_info" href="/detail/publisher">
+            <span class="prod_category">국내도서</span>
+            <span id="cmdtName_PUBLISHER_MATCH">출판사 매칭 도서</span>
+          </a>
+        </div>
+        <div class="prod_author_group">
+          <a class="author" href="/author/1">김저자</a>
+        </div>
+        <div class="prod_publish">
+          <a class="text" href="/publisher/example">예시출판사</a>
+        </div>
+      </li>
+      <li class="prod_item">
+        <input class="result_checkbox" type="checkbox" data-pid="AUTHOR_MATCH" />
+        <div class="prod_name_group">
+          <a class="prod_info" href="/detail/author">
+            <span class="prod_category">국내도서</span>
+            <span id="cmdtName_AUTHOR_MATCH">저자 매칭 도서</span>
+          </a>
+        </div>
+        <div class="prod_author_group">
+          <a class="author" href="/author/2">홍길동</a>
+        </div>
+        <div class="prod_publish">
+          <a class="text" href="/publisher/other">다른출판사</a>
+        </div>
+      </li>
+      <li class="prod_item">
+        <input class="result_checkbox" type="checkbox" data-pid="NO_PUBLISHER" />
+        <div class="prod_name_group">
+          <a class="prod_info" href="/detail/no-publisher">
+            <span class="prod_category">국내도서</span>
+            <span id="cmdtName_NO_PUBLISHER">출판사 없는 도서</span>
+          </a>
+        </div>
+        <div class="prod_author_group">
+          <a class="author" href="/author/3">무명</a>
+        </div>
+      </li>
+      <li class="prod_item">
+        <input class="result_checkbox" type="checkbox" data-pid="MISSING_TITLE" />
+        <div class="prod_name_group">
+          <a class="prod_info" href="/detail/missing-title">
+            <span class="prod_category">국내도서</span>
+          </a>
+        </div>
+        <div class="prod_author_group">
+          <a class="author" href="/author/4">제목없음</a>
+        </div>
+        <div class="prod_publish">
+          <a class="text" href="/publisher/missing">제목없는출판사</a>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>
