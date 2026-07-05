@@ -33,5 +33,5 @@ BookTidy MVP는 서버 API, analytics, 원격 동기화, 외부 데이터 전송
 
 - `storage`: 사용자가 입력한 필터 규칙과 설정을 Firefox 로컬 확장 저장소에 저장하고 불러오는 데 사용합니다.
 - `tabs`: popup의 `현재 페이지 새로고침` 버튼에서 현재 활성 탭을 찾고 새로고침하는 데만 사용합니다.
-- `*://*.kyobobook.co.kr/*`: 교보문고 페이지에서 도서 항목의 제목, 출판사, 저자 정보를 읽고 사용자의 로컬 규칙과 비교하는 데 사용합니다.
-- `booktidy-icon.svg` web-accessible resource: 교보문고 페이지에 표시되는 BookTidy UI에서 확장 아이콘을 불러오는 데 사용합니다.
+- 호스트 권한: 지원 대상 도서 검색 페이지에서 도서 항목의 제목, 출판사, 저자 정보를 읽고 사용자의 로컬 규칙과 비교하는 데 사용합니다.
+- `booktidy-icon.svg` web-accessible resource: 지원 대상 페이지에 표시되는 BookTidy UI에서 확장 아이콘을 불러오는 데 사용합니다.

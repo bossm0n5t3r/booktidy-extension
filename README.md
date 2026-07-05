@@ -1,11 +1,11 @@
 # BookTidy
 
-BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입니다. 사용자가 등록한 출판사, 저자, 또는 제목 규칙에 맞는 교보문고 검색 결과 도서 항목을 접어서 표시합니다.
+BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입니다. 사용자가 등록한 출판사, 저자, 또는 제목 규칙에 맞는 도서 검색 결과 항목을 접어서 표시합니다.
 
 ## MVP 범위
 
 - 대상 브라우저: Firefox Desktop 140 이상.
-- 지원 사이트: `kyobobook.co.kr`.
+- 지원 범위: 지원 대상 도서 검색 사이트의 검색 결과 페이지.
 - 규칙 타입: `publisher`, `author`, `title`.
 - 매칭 방식: `contains`.
 - 표시 방식: 원본 도서 항목을 숨기고 사유와 `보기` 버튼이 있는 collapsed UI를 표시합니다.
@@ -17,14 +17,14 @@ BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입�
 1. popup에서 BookTidy 활성화 여부를 설정합니다.
 2. popup에서 light/dark 테마를 선택합니다.
 3. popup에서 `출판사`, `저자`, 또는 `제목` 규칙을 추가합니다. 입력 예시는 선택한 규칙 유형에 따라 바뀝니다.
-4. 교보문고 검색 결과 페이지를 새로고침합니다. popup의 `현재 페이지 새로고침` 버튼을 사용할 수도 있습니다.
+4. 지원 대상 도서 검색 결과 페이지를 새로고침합니다. popup의 `현재 페이지 새로고침` 버튼을 사용할 수도 있습니다.
 5. content script가 도서 항목의 제목, 출판사, 저자 정보를 읽고 `contains` 규칙을 평가합니다.
 6. 매칭된 항목은 `BookTidy에 의해 접힘`, `사유: ...`, `보기` 버튼을 가진 collapsed UI로 대체됩니다.
 7. `보기`를 누르면 해당 원본 항목만 임시로 다시 표시됩니다.
 
 popup 변경 사항은 현재 열린 검색 결과 페이지에 즉시 메시징하지 않습니다. 적용 기준은 페이지 새로고침입니다.
 
-교보문고 어댑터는 검색 결과 DOM을 우선 읽고, 필요한 경우 페이지의 JSON-LD 구조화 데이터 또는 카드 메타데이터를 보조 정보로 사용합니다. 동적으로 추가되는 검색 결과는 `MutationObserver`로 감지해 다시 평가합니다.
+사이트 어댑터는 검색 결과 DOM을 우선 읽고, 필요한 경우 페이지의 JSON-LD 구조화 데이터 또는 카드 메타데이터를 보조 정보로 사용합니다. 동적으로 추가되는 검색 결과는 `MutationObserver`로 감지해 다시 평가합니다.
 
 ## 저장 데이터
 
@@ -44,8 +44,8 @@ BookTidy는 다음 값만 `browser.storage.local`에 저장합니다.
 
 - `storage`: 필터 규칙과 설정을 Firefox 로컬 확장 저장소에 저장하고 불러옵니다.
 - `tabs`: popup의 `현재 페이지 새로고침` 버튼에서 현재 활성 탭을 찾고 새로고침합니다.
-- `*://*.kyobobook.co.kr/*`: 교보문고 페이지에서 도서 항목 정보를 읽고 로컬 규칙과 비교합니다.
-- `booktidy-icon.svg` web-accessible resource: 교보문고 페이지에 표시되는 BookTidy collapsed UI에서 확장 아이콘을 불러옵니다.
+- 호스트 권한: 지원 대상 도서 검색 페이지에서 도서 항목 정보를 읽고 로컬 규칙과 비교합니다.
+- `booktidy-icon.svg` web-accessible resource: 지원 대상 페이지에 표시되는 BookTidy collapsed UI에서 확장 아이콘을 불러옵니다.
 
 ## 개발 명령
 
@@ -82,7 +82,7 @@ pnpm web-ext:build
 
 Playwright E2E는 빌드된 `dist/assets/content.js`와 `dist/assets/content.css`를 정적 fixture에 주입합니다. 따라서 `pnpm test:e2e` 전에 `pnpm build`를 먼저 실행해야 합니다.
 
-테스트 범위는 storage schema 정규화, rule matcher/engine, Kyobo adapter, collapsed renderer, mutation observer, extension build 산출물과 `web-ext` validation을 포함합니다.
+테스트 범위는 storage schema 정규화, rule matcher/engine, site adapter, collapsed renderer, mutation observer, extension build 산출물과 `web-ext` validation을 포함합니다.
 
 ## Firefox에서 실행
 
@@ -91,9 +91,9 @@ pnpm build
 pnpm web-ext:run
 ```
 
-Firefox가 열리면 교보문고 검색 결과 페이지에서 popup을 열고 publisher/author/title 규칙을 추가한 뒤 페이지를 새로고침합니다.
+시작 페이지가 필요하면 `BOOKTIDY_WEB_EXT_START_URL` 환경 변수로 지정합니다.
 
-`web-ext:run`의 기본 시작 URL은 `https://store.kyobobook.co.kr/category/domestic/3301/all`입니다.
+Firefox가 열리면 지원 대상 도서 검색 결과 페이지에서 popup을 열고 publisher/author/title 규칙을 추가한 뒤 페이지를 새로고침합니다.
 
 ## 문서
 

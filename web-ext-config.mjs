@@ -1,3 +1,5 @@
+const startUrl = process.env.BOOKTIDY_WEB_EXT_START_URL ?? "about:blank";
+
 export default {
   sourceDir: "dist",
   artifactsDir: "web-ext-artifacts",
@@ -5,6 +7,6 @@ export default {
     overwriteDest: true,
   },
   run: {
-    startUrl: ["https://store.kyobobook.co.kr/category/domestic/3301/all"],
+    startUrl: [startUrl],
   },
 };
