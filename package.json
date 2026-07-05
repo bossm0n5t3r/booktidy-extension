@@ -5,6 +5,7 @@
   "author": "bossm0n5t3r",
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "pnpm@11.10.0",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
@@ -20,7 +21,9 @@
     "web-ext:run": "web-ext run --config web-ext-config.mjs",
     "web-ext:lint": "web-ext lint --config web-ext-config.mjs",
     "web-ext:build": "web-ext build --config web-ext-config.mjs",
-    "package": "pnpm clean && pnpm build && pnpm web-ext:build"
+    "package:addon": "./scripts/build-addon.sh",
+    "package:source": "./scripts/create-source-archive.sh",
+    "package": "./scripts/package-release.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",

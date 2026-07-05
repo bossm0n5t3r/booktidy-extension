@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 web-ext-artifacts
+booktidy-extension-source-*.zip
 playwright-report
 test-results
 *.local

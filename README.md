@@ -69,6 +69,35 @@ pnpm package
 
 `pnpm package`는 기존 `dist`와 `web-ext-artifacts`를 지운 뒤 빌드하고 `web-ext` 패키지를 생성합니다.
 
+## AMO 소스 빌드 안내
+
+Firefox Add-ons reviewer에게 소스 코드를 제출할 때는 `node_modules`, `dist`, `web-ext-artifacts`를 제외한 프로젝트 소스와 설정 파일, `pnpm-lock.yaml`을 포함합니다.
+
+빌드 환경:
+
+- OS: macOS 또는 Linux. Windows에서는 Git Bash, WSL 등 POSIX shell 환경이 필요합니다.
+- Node.js: `24.11.1`에서 검증.
+- pnpm: `11.10.0`.
+- `zip` CLI: AMO 소스 archive 생성에 필요합니다.
+
+Node.js는 <https://nodejs.org/>에서 설치합니다. `corepack`을 사용할 수 없으면 `npm install --global pnpm@11.10.0`으로 pnpm을 설치합니다. `zip` CLI가 없다면 OS 패키지 매니저로 설치합니다.
+
+Add-on 패키지만 빌드:
+
+```bash
+./scripts/build-addon.sh
+```
+
+AMO 제출용 add-on 패키지와 소스 archive를 함께 생성:
+
+```bash
+pnpm package
+```
+
+`scripts/build-addon.sh`는 `pnpm@11.10.0`을 활성화하고, 기존 `dist`와 `web-ext-artifacts`를 삭제한 뒤 의존성 설치, TypeScript/Vite 빌드, `web-ext` 패키징을 순서대로 실행합니다. 최종 Firefox Add-on 패키지는 `web-ext-artifacts/*.zip`에 생성됩니다.
+
+`scripts/create-source-archive.sh`는 기존 `booktidy-extension-source-*.zip`을 삭제한 뒤 AMO 소스 archive를 새로 생성합니다. `node_modules`, `dist`, `web-ext-artifacts`, `.git`은 source archive에 포함하지 않습니다.
+
 ## 테스트
 
 ```bash
