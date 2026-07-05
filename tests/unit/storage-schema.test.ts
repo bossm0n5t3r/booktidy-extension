@@ -39,6 +39,20 @@ describe("storage schema", () => {
     });
   });
 
+  it("preserves title rules", () => {
+    const titleRule: FilterRule = { ...validRule, type: "title" };
+
+    const normalized = normalizeStorageSchema({
+      filterRules: [titleRule],
+    });
+
+    expect(normalized).toEqual({
+      version: 1,
+      filterRules: [titleRule],
+      settings: { enabled: true, theme: "light" },
+    });
+  });
+
   it("fills missing settings fields with defaults", () => {
     expect(normalizeStorageSchema({ settings: { enabled: false } })).toEqual({
       version: 1,

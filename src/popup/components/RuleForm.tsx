@@ -13,7 +13,7 @@ const normalizeText = (value: string): string => {
 };
 
 const isRuleType = (value: string): value is RuleType => {
-  return value === "publisher" || value === "author";
+  return value === "publisher" || value === "author" || value === "title";
 };
 
 const validateRule = (type: RuleType, value: string, rules: FilterRule[]): string | null => {
@@ -78,13 +78,20 @@ export const RuleForm = ({ rules, onAdd, disabled }: RuleFormProps) => {
         >
           <option value="publisher">출판사</option>
           <option value="author">저자</option>
+          <option value="title">제목</option>
         </select>
         <input
           type="text"
           value={value}
           disabled={disabled}
           maxLength={100}
-          placeholder="예: AI"
+          placeholder={
+            type === "publisher"
+              ? "예: 예시출판사"
+              : type === "author"
+                ? "예: 홍길동"
+                : "예: 도서 제목"
+          }
           onChange={(event) => setValue(event.currentTarget.value)}
           aria-label="규칙 값"
         />

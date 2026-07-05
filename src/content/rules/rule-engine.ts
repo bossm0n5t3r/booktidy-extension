@@ -17,6 +17,10 @@ export const evaluateRules = (book: BookItem, rules: FilterRule[]): FilterResult
     ) {
       return { matched: true, rule, reason: `저자 "${rule.value}"` };
     }
+
+    if (rule.type === "title" && matchContains(book.title, rule.value)) {
+      return { matched: true, rule, reason: `제목 "${rule.value}"` };
+    }
   }
 
   return { matched: false };

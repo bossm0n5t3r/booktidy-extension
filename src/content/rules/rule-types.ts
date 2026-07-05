@@ -1,6 +1,6 @@
 export type SupportedSite = "kyobo";
 
-export type RuleType = "publisher" | "author";
+export type RuleType = "publisher" | "author" | "title";
 
 export type MatchMode = "contains";
 

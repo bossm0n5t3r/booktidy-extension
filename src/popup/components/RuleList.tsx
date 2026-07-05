@@ -7,7 +7,15 @@ interface RuleListProps {
 }
 
 const getRuleTypeLabel = (rule: FilterRule): string => {
-  return rule.type === "publisher" ? "출판사" : "저자";
+  if (rule.type === "publisher") {
+    return "출판사";
+  }
+
+  if (rule.type === "author") {
+    return "저자";
+  }
+
+  return "제목";
 };
 
 export const RuleList = ({ rules, onDelete, disabled }: RuleListProps) => {

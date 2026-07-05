@@ -63,4 +63,11 @@ describe("evaluateRules", () => {
       matched: false,
     });
   });
+
+  it("returns title match reason", () => {
+    const result = evaluateRules(createBook(), [createRule({ type: "title", value: "테스트" })]);
+
+    expect(result.matched).toBe(true);
+    expect(result.reason).toBe('제목 "테스트"');
+  });
 });

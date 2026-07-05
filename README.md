@@ -1,12 +1,12 @@
 # BookTidy
 
-BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입니다. 사용자가 등록한 출판사 또는 저자 규칙에 맞는 교보문고 검색 결과 도서 항목을 접어서 표시합니다.
+BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입니다. 사용자가 등록한 출판사, 저자, 또는 제목 규칙에 맞는 교보문고 검색 결과 도서 항목을 접어서 표시합니다.
 
 ## MVP 범위
 
 - 대상 브라우저: Firefox Desktop 127 이상.
 - 지원 사이트: `kyobobook.co.kr`.
-- 규칙 타입: `publisher`, `author`.
+- 규칙 타입: `publisher`, `author`, `title`.
 - 매칭 방식: `contains`.
 - 표시 방식: 원본 도서 항목을 숨기고 사유와 `보기` 버튼이 있는 collapsed UI를 표시합니다.
 - 저장소: `browser.storage.local` 로컬 저장만 사용.
@@ -16,7 +16,7 @@ BookTidy는 Firefox Desktop용 WebExtensions Manifest V3 확장 프로그램입�
 
 1. popup에서 BookTidy 활성화 여부를 설정합니다.
 2. popup에서 light/dark 테마를 선택합니다.
-3. popup에서 `출판사` 또는 `저자` 규칙을 추가합니다.
+3. popup에서 `출판사`, `저자`, 또는 `제목` 규칙을 추가합니다. 입력 예시는 선택한 규칙 유형에 따라 바뀝니다.
 4. 교보문고 검색 결과 페이지를 새로고침합니다. popup의 `현재 페이지 새로고침` 버튼을 사용할 수도 있습니다.
 5. content script가 도서 항목의 제목, 출판사, 저자 정보를 읽고 `contains` 규칙을 평가합니다.
 6. 매칭된 항목은 `BookTidy에 의해 접힘`, `사유: ...`, `보기` 버튼을 가진 collapsed UI로 대체됩니다.
@@ -32,6 +32,7 @@ BookTidy는 다음 값만 `browser.storage.local`에 저장합니다.
 
 - 사용자가 입력한 출판사 필터와 해당 규칙의 내부 메타데이터.
 - 사용자가 입력한 저자 필터와 해당 규칙의 내부 메타데이터.
+- 사용자가 입력한 제목 필터와 해당 규칙의 내부 메타데이터.
 - BookTidy 활성화 여부.
 - popup 테마 설정(`light` 또는 `dark`).
 - storage schema version.
@@ -90,7 +91,7 @@ pnpm build
 pnpm web-ext:run
 ```
 
-Firefox가 열리면 교보문고 검색 결과 페이지에서 popup을 열고 publisher/author 규칙을 추가한 뒤 페이지를 새로고침합니다.
+Firefox가 열리면 교보문고 검색 결과 페이지에서 popup을 열고 publisher/author/title 규칙을 추가한 뒤 페이지를 새로고침합니다.
 
 `web-ext:run`의 기본 시작 URL은 `https://store.kyobobook.co.kr/category/domestic/3301/all`입니다.
 

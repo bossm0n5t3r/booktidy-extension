@@ -17,7 +17,7 @@ const isRecord = (value: unknown): value is Record<string, unknown> => {
 };
 
 const isRuleType = (value: unknown): value is FilterRule["type"] => {
-  return value === "publisher" || value === "author";
+  return value === "publisher" || value === "author" || value === "title";
 };
 
 const isMatchMode = (value: unknown): value is FilterRule["matchMode"] => {

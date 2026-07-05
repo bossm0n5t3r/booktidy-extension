@@ -39,7 +39,7 @@ const isValidFilterRule = (value: unknown): value is FilterRule => {
 
   return (
     typeof id === "string" &&
-    (type === "publisher" || type === "author") &&
+    (type === "publisher" || type === "author" || type === "title") &&
     typeof ruleValue === "string" &&
     matchMode === "contains" &&
     typeof enabled === "boolean" &&
@@ -264,7 +264,7 @@ const App = () => {
         </div>
         <div>
           <h1>BookTidy</h1>
-          <p>교보문고 검색 결과를 출판사와 저자 규칙으로 정리합니다.</p>
+          <p>도서 검색 결과를 출판사, 저자, 제목 규칙으로 정리합니다.</p>
         </div>
       </header>
 
